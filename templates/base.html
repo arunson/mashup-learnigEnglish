@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/static/main.css"/>
+	<title>Learning English</title>
+</head>
+
+<body>
+	<div class="search">
+		<form method="post">
+			<table>
+				<tr>
+					<td>
+						Search : 
+					</td>
+					<td>
+						<input type="text" name="query" value="">
+					</td>
+				</tr>
+			</table>
+			<input type="submit">
+		</form>
+	</div>
+	<div id="dicItems">
+		<div class="section">Merriam Webster API</div>
+		{% for item in dicItems %}
+		{{item.ew}}
+		<br>
+		{{item.pr}}
+		<br>
+		{{item.fl}}
+		<br>
+		{% for def in item.defs %}
+			{{def}}
+			<br>
+		{% endfor %}
+		<br><br>
+		{% endfor %}
+	</div>
+
+	<div id="tweets">
+		<div class="section">Twitter API</div>
+	{% for tweet in tweets %}
+		{{tweet|safe}}
+		<br><br>
+	{% endfor %}
+	</div>
+
+	<div id="images">
+		<div class="section">Google image API</div>
+	{% for image in images %}
+		<img src='{{image|safe}}'/>
+	{% endfor %}
+	</div>
+
+</body>
+
+</html>
